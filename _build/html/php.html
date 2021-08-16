@@ -1,0 +1,215 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>PHP &#8212; codeinfo 1.4 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Htaccess" href="htaccess.html" />
+    <link rel="prev" title="Welcome to codeinfo’s documentation!" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="php">
+<span id="id1"></span><h1>PHP<a class="headerlink" href="#php" title="Permalink to this headline">¶</a></h1>
+<section id="security-points">
+<h2>Security Points<a class="headerlink" href="#security-points" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Avoid using mysql(i)_ extensions <strong>use PDO</strong></p></li>
+<li><p>You should use below code at the time uploading file.</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">$file</span> <span class="pre">=</span> <span class="pre">basename(realpath($_GET['file']));</span></code></p>
+</div></blockquote>
+</li>
+<li><p>use password_hash and password_verify</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">$hash</span> <span class="pre">=</span> <span class="pre">password_hash($password,</span> <span class="pre">PASSWORD_DEFAULT);</span></code>
+<code class="docutils literal notranslate"><span class="pre">password_verify($password,</span> <span class="pre">$hash);</span></code></p>
+</div></blockquote>
+</li>
+<li><p>Don’t Do This</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">&lt;a</span> <span class="pre">href=&quot;http://example.com&quot;</span> <span class="pre">target=&quot;_blank&quot;&gt;Click</span> <span class="pre">here&lt;/a&gt;</span></code>
+Do This Instead</p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;a</span> <span class="pre">href=&quot;https://example.com&quot;</span> <span class="pre">target=&quot;_blank&quot;</span> <span class="pre">rel=&quot;noopener</span> <span class="pre">noreferrer&quot;&gt;Click</span> <span class="pre">here&lt;/a&gt;</span></code></p>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="sanitize-user-data">
+<h2>SANITIZE user data<a class="headerlink" href="#sanitize-user-data" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>use below filer</p>
+<p><code class="docutils literal notranslate"><span class="pre">filter_var($_REQUEST['search'],</span> <span class="pre">FILTER_SANITIZE_FULL_SPECIAL_CHARS);</span></code>
+<code class="docutils literal notranslate"><span class="pre">filter_var($email_address,</span> <span class="pre">FILTER_VALIDATE_EMAIL);</span></code> For Validate email address
+<code class="docutils literal notranslate"><span class="pre">filter_var($ip_address,</span> <span class="pre">FILTER_VALIDATE_IP);</span></code> For Validate An IP Address
+<code class="docutils literal notranslate"><span class="pre">filter_var($url,</span> <span class="pre">FILTER_VALIDATE_URL);</span></code> For Validate Url address</p>
+</div>
+</section>
+<section id="php-ini-setting">
+<h2>PHP.INI Setting<a class="headerlink" href="#php-ini-setting" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Change expose_php to Off</p></li>
+<li><p>Change mail.add_x_header to Off</p></li>
+<li><dl class="simple">
+<dt>Change session.cookie_httponly to On</dt><dd><p><code class="docutils literal notranslate"><span class="pre">session.cookie_httponly</span> <span class="pre">=</span> <span class="pre">On</span></code></p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Change session.cookie_secure to On</dt><dd><p><code class="docutils literal notranslate"><span class="pre">session.cookie_secure</span> <span class="pre">=</span> <span class="pre">On</span></code></p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Change session.use_strict_mode to On</dt><dd><p><code class="docutils literal notranslate"><span class="pre">session.use_strict_mode</span> <span class="pre">=</span> <span class="pre">1</span></code></p>
+</dd>
+</dl>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">allow_url_include</span> <span class="pre">=</span> <span class="pre">Off</span></code></p></li>
+<li><dl class="simple">
+<dt>Change open_basedir</dt><dd><p><code class="docutils literal notranslate"><span class="pre">open_basedir</span> <span class="pre">=</span> <span class="pre">/var/www/html/</span></code>
+<code class="docutils literal notranslate"><span class="pre">//</span> <span class="pre">Multiple</span> <span class="pre">directories</span> <span class="pre">can</span> <span class="pre">be</span> <span class="pre">specified</span> <span class="pre">with</span> <span class="pre">the</span> <span class="pre">&quot;:&quot;</span> <span class="pre">delimiter</span></code>
+<code class="docutils literal notranslate"><span class="pre">open_basedir</span> <span class="pre">=</span> <span class="pre">/var/www/html/:/var/www/html2/:/var/www/html3/</span></code></p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Change upload_temp_dir</dt><dd><p><code class="docutils literal notranslate"><span class="pre">upload_tmp_dir</span> <span class="pre">=</span> <span class="pre">/var/www/html/tmp/</span></code></p>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<p><strong>Write PHP Error on a Specific IP</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="o">(</span><span class="nv">$_SERVER</span><span class="o">[</span><span class="s2">&quot;REMOTE_ADDR&quot;</span><span class="o">]</span> <span class="o">==</span><span class="s1">&#39;xxx.xxxx.xxx.xxx&#39;</span><span class="o">){</span>
+  error_reporting<span class="o">(</span>E_ALL<span class="o">)</span><span class="p">;</span>
+   ini_set<span class="o">(</span><span class="s1">&#39;display_errors&#39;</span>,<span class="s1">&#39;Off&#39;</span><span class="o">)</span><span class="p">;</span>
+   ini_set<span class="o">(</span><span class="s2">&quot;log_errors&quot;</span>, <span class="m">1</span><span class="o">)</span><span class="p">;</span>
+   ini_set<span class="o">(</span><span class="s2">&quot;error_log&quot;</span>, <span class="s2">&quot;D:/xampp/htdocs/live/errors/lservererror.html&quot;</span><span class="o">)</span><span class="p">;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p><strong>Write a text file</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">##Generate file##</span>
+<span class="nv">$arrayInfo</span> <span class="o">=</span>array<span class="o">()</span><span class="p">;</span>
+<span class="nv">$path</span> <span class="o">=</span> <span class="s2">&quot;/var/www/html/&quot;</span><span class="p">;</span>
+<span class="nv">$fp</span> <span class="o">=</span> fopen<span class="o">(</span><span class="nv">$path</span>.<span class="s2">&quot;arrayDetails.txt&quot;</span>, <span class="s2">&quot;a&quot;</span><span class="o">)</span><span class="p">;</span>
+fwrite<span class="o">(</span><span class="nv">$fp</span>, print_r<span class="o">(</span><span class="nv">$arrayInfo</span>,true<span class="o">))</span><span class="p">;</span>
+fclose<span class="o">(</span><span class="nv">$fp</span><span class="o">)</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">codeinfo</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">PHP</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#security-points">Security Points</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sanitize-user-data">SANITIZE user data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#php-ini-setting">PHP.INI Setting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="htaccess.html">Htaccess</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mysql.html">MySQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="git.html">GIT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nodejs.html">NodeJS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linux.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digitalocean.html">Digital Ocean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aws.html">AWS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gcloud.html">Google Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docker.html">Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aws-best.html">AWS Best practise</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome to codeinfo’s documentation!</a></li>
+      <li>Next: <a href="htaccess.html" title="next chapter">Htaccess</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, sanjay chaturvedi.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/php.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
