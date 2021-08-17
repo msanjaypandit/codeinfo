@@ -80,7 +80,7 @@ MAKE CHANGES
  * On its own, git push makes changes to the repository and all of its associations.
  * The git push `<remote> <branch>` command will push the changes on `<branch>` from your local repository to `<remote>`, which is usually the repository on a server  
    where you collaborate with your colleagues.
- * By default, the first remote is called "origin." If you’ve made changes in your new-feature branch, you’d do git push origin new-feature to send the changes (commits) of new-feature to the place where you collaborate with your colleagues.
+ * By default, the first remote is called "origin." If you’ve made changes in your new-feature branch, you’d do git push origin new-feature to send the changes (commits) of new-feature to the place where you collaborate with your colleaguesn.
 
 .. Tip::
 
