@@ -15,10 +15,6 @@
 # sys.path.insert(0, os.path.abspath('.'))
 
 # -- Project information -----------------------------------------------------
-import stanford_theme
-html_theme = "stanford_theme"
-html_theme_path = [stanford_theme.get_html_theme_path()]
-
 project = 'codeinfo'
 copyright = '2021, sanjay chaturvedi'
 author = 'sanjay chaturvedi'
@@ -32,8 +28,7 @@ release = '1.4'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = [
-]
+extensions = ['stanford_theme']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
