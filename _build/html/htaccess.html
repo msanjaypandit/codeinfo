@@ -1,18 +1,19 @@
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
-    <title>Htaccess &#8212; codeinfo 1.4 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Htaccess &#8212; CodeInfo  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="MySQL" href="mysql.html" />
@@ -33,9 +34,9 @@
 
           <div class="body" role="main">
             
-  <section id="htaccess">
+  <div class="section" id="htaccess">
 <h1>Htaccess<a class="headerlink" href="#htaccess" title="Permalink to this headline">¶</a></h1>
-<section id="ssl-redirection">
+<div class="section" id="ssl-redirection">
 <h2>SSL Redirection<a class="headerlink" href="#ssl-redirection" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">##Redirection to https file**</span>
 RewriteCond %<span class="o">{</span>HTTPS<span class="o">}</span> off
@@ -46,11 +47,11 @@ RewriteCond %<span class="o">{</span>HTTP_HOST<span class="o">}</span> !^www<spa
 RewriteRule .* https://www.%<span class="o">{</span>HTTP_HOST<span class="o">}</span>%<span class="o">{</span>REQUEST_URI<span class="o">}</span> <span class="o">[</span>L,R<span class="o">=</span><span class="m">301</span><span class="o">]</span>
 </pre></div>
 </div>
-</section>
-<section id="test">
+</div>
+<div class="section" id="test">
 <h2>Test<a class="headerlink" href="#test" title="Permalink to this headline">¶</a></h2>
-</section>
-</section>
+</div>
+</div>
 
 
           </div>
@@ -59,7 +60,7 @@ RewriteRule .* https://www.%<span class="o">{</span>HTTP_HOST<span class="o">}</
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="index.html">codeinfo</a></h1>
+<h1 class="logo"><a href="index.html">CodeInfo</a></h1>
 
 
 
@@ -69,7 +70,7 @@ RewriteRule .* https://www.%<span class="o">{</span>HTTP_HOST<span class="o">}</
 
 
 <h3>Navigation</h3>
-<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="php.html">PHP</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Htaccess</a><ul>
@@ -98,15 +99,17 @@ RewriteRule .* https://www.%<span class="o">{</span>HTTP_HOST<span class="o">}</
 </ul>
 </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
+  <h3>Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script type="text/javascript">$('#searchbox').show(0);</script>
 
 
 
@@ -120,10 +123,10 @@ RewriteRule .* https://www.%<span class="o">{</span>HTTP_HOST<span class="o">}</
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2021, sanjay chaturvedi.
+      &copy;2022, Sanjay Chaturvedi.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.1.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.6</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

@@ -1,18 +1,19 @@
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
-    <title>AWS Best practise &#8212; codeinfo 1.4 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>AWS Best practise &#8212; CodeInfo  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="Docker" href="docker.html" />
@@ -32,19 +33,19 @@
 
           <div class="body" role="main">
             
-  <section id="aws-best-practise">
+  <div class="section" id="aws-best-practise">
 <span id="awsbest"></span><h1>AWS Best practise<a class="headerlink" href="#aws-best-practise" title="Permalink to this headline">¶</a></h1>
-<section id="aws-cli">
+<div class="section" id="aws-cli">
 <h2>AWS CLI<a class="headerlink" href="#aws-cli" title="Permalink to this headline">¶</a></h2>
-<section id="configuration">
+<div class="section" id="configuration">
 <h3>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">aws</span> <span class="pre">configure</span> <span class="pre">--profile</span> <span class="pre">PROFILE_NAME</span></code>
 <code class="docutils literal notranslate"><span class="pre">AWS</span> <span class="pre">Access</span> <span class="pre">Key</span> <span class="pre">ID</span> <span class="pre">[None]:</span> <span class="pre">YOURKEY</span></code>
 <code class="docutils literal notranslate"><span class="pre">AWS</span> <span class="pre">Secret</span> <span class="pre">Access</span> <span class="pre">Key</span> <span class="pre">[None]:</span> <span class="pre">YOURSECRETKEY</span></code>
 <code class="docutils literal notranslate"><span class="pre">Default</span> <span class="pre">region</span> <span class="pre">name</span> <span class="pre">[None]:</span> <span class="pre">us-west-2</span></code>
 <code class="docutils literal notranslate"><span class="pre">Default</span> <span class="pre">output</span> <span class="pre">format</span> <span class="pre">[None]:</span> <span class="pre">json</span></code></p>
-</section>
-<section id="s3-commands">
+</div>
+<div class="section" id="s3-commands">
 <h3>S3 commands<a class="headerlink" href="#s3-commands" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">aws</span> <span class="pre">--profile</span> <span class="pre">profilename</span> <span class="pre">s3</span> <span class="pre">ls</span> <span class="pre">s3://bucketname</span></code> For listing of all files in a bucket
 <code class="docutils literal notranslate"><span class="pre">aws</span> <span class="pre">--profile</span> <span class="pre">profilename</span> <span class="pre">s3</span> <span class="pre">cp</span> <span class="pre">filename</span> <span class="pre">s3://bucketname/</span></code>  For copy a file from local to  bucket
@@ -52,28 +53,26 @@
 <code class="docutils literal notranslate"><span class="pre">aws</span> <span class="pre">--profile</span> <span class="pre">profilename</span> <span class="pre">s3</span> <span class="pre">cp</span> <span class="pre">s3://bucketname/filename</span> <span class="pre">/serverpath</span></code> For copy a file from local to  bucket
 <code class="docutils literal notranslate"><span class="pre">aws</span> <span class="pre">--profile</span> <span class="pre">profilename</span> <span class="pre">s3</span> <span class="pre">sync</span> <span class="pre">.</span> <span class="pre">s3://bucketname/MyFolder</span></code> For copy all bucket of a folder to bucket folder</p>
 <div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Space in S3 Bucket
+<p class="first admonition-title">Tip</p>
+<p class="last">Space in S3 Bucket
 aws s3api –profile PROFILE_NAME list-objects –bucket BUCKETNAME –output json –query “[sum(Contents[].Size), length(Contents[])]” | awk ‘NR!=2 {print $0;next} NR==2 {print $0/1024/1024/1024” GB”}’</p>
 </div>
-</section>
-</section>
-<section id="aws-load-balancer">
+</div>
+</div>
+<div class="section" id="aws-load-balancer">
 <h2>AWS load balancer<a class="headerlink" href="#aws-load-balancer" title="Permalink to this headline">¶</a></h2>
-<section id="scaling-vertically">
+<div class="section" id="scaling-vertically">
 <h3>Scaling Vertically<a class="headerlink" href="#scaling-vertically" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><p>Scaling vertically takes place through an increase in the specifications of an individual resource (e.g., upgrading a server with a larger hard drive or a faster CPU). On Amazon EC2, this can easily be achieved by stopping an instance and resizing it to an instance type that has more RAM, CPU, IO, or networking capabilities. This way of scaling can eventually hit a limit and it is not always a cost efficient or highly available approach. However, it is very easy to implement and can be sufficient for many use cases especially in the short term.</p>
-</div></blockquote>
-</section>
-<section id="scaling-horizontally">
+<div>Scaling vertically takes place through an increase in the specifications of an individual resource (e.g., upgrading a server with a larger hard drive or a faster CPU). On Amazon EC2, this can easily be achieved by stopping an instance and resizing it to an instance type that has more RAM, CPU, IO, or networking capabilities. This way of scaling can eventually hit a limit and it is not always a cost efficient or highly available approach. However, it is very easy to implement and can be sufficient for many use cases especially in the short term.</div></blockquote>
+</div>
+<div class="section" id="scaling-horizontally">
 <h3>Scaling Horizontally<a class="headerlink" href="#scaling-horizontally" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><p>Scaling horizontally takes place through an increase in the number of resources (e.g., adding more hard drives to a storage array or adding more servers to support an application). This is a great way to build Internet-scale applications that leverage the elasticity of cloud computing. Not all architectures are designed to distribute their workload to multiple resources, so let’s examine some of the possible scenarios.</p>
-</div></blockquote>
-</section>
-</section>
-</section>
+<div>Scaling horizontally takes place through an increase in the number of resources (e.g., adding more hard drives to a storage array or adding more servers to support an application). This is a great way to build Internet-scale applications that leverage the elasticity of cloud computing. Not all architectures are designed to distribute their workload to multiple resources, so let’s examine some of the possible scenarios.</div></blockquote>
+</div>
+</div>
+</div>
 
 
           </div>
@@ -82,7 +81,7 @@ aws s3api –profile PROFILE_NAME list-objects –bucket BUCKETNAME –output js
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="index.html">codeinfo</a></h1>
+<h1 class="logo"><a href="index.html">CodeInfo</a></h1>
 
 
 
@@ -92,7 +91,7 @@ aws s3api –profile PROFILE_NAME list-objects –bucket BUCKETNAME –output js
 
 
 <h3>Navigation</h3>
-<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="php.html">PHP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="htaccess.html">Htaccess</a></li>
@@ -120,15 +119,17 @@ aws s3api –profile PROFILE_NAME list-objects –bucket BUCKETNAME –output js
 </ul>
 </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
+  <h3>Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script type="text/javascript">$('#searchbox').show(0);</script>
 
 
 
@@ -142,10 +143,10 @@ aws s3api –profile PROFILE_NAME list-objects –bucket BUCKETNAME –output js
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2021, sanjay chaturvedi.
+      &copy;2022, Sanjay Chaturvedi.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.1.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.6</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

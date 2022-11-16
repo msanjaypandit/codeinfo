@@ -1,18 +1,19 @@
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
-    <title>Digital Ocean &#8212; codeinfo 1.4 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Digital Ocean &#8212; CodeInfo  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="AWS" href="aws.html" />
@@ -33,62 +34,62 @@
 
           <div class="body" role="main">
             
-  <section id="digital-ocean">
+  <div class="section" id="digital-ocean">
 <span id="digitalocean"></span><h1>Digital Ocean<a class="headerlink" href="#digital-ocean" title="Permalink to this headline">¶</a></h1>
-<section id="install-ubuntu">
+<div class="section" id="install-ubuntu">
 <h2>Install Ubuntu<a class="headerlink" href="#install-ubuntu" title="Permalink to this headline">¶</a></h2>
 <p>Open terminal using ctrl+alt+T in ubuntu, putty on windows. Connect with ssh if you are going to creating virtual host on ubuntu server.</p>
 <ul class="simple">
-<li><p>sudo apt-get update  (it will update all system libraries)</p></li>
-<li><p>cd /var/www          (Move to www path)</p></li>
-<li><p>sudo mkdir -p example1.com/public_html    (it will create both directory example1.com and example1.com/public_html)</p></li>
-<li><p>sudo mkdir -p example2.com/public_html    (it will create both directory example2.com and example2.com/public_html)</p></li>
-<li><p>cd /etc/apache2/sites-available/</p></li>
-<li><p>sudo cp 000-default.conf example1.com.conf</p></li>
-<li><p>sudo cp 000-default.conf example2.com.conf</p></li>
-<li><p>nano example1.com.conf and put below code in it</p></li>
+<li>sudo apt-get update  (it will update all system libraries)</li>
+<li>cd /var/www          (Move to www path)</li>
+<li>sudo mkdir -p example1.com/public_html    (it will create both directory example1.com and example1.com/public_html)</li>
+<li>sudo mkdir -p example2.com/public_html    (it will create both directory example2.com and example2.com/public_html)</li>
+<li>cd /etc/apache2/sites-available/</li>
+<li>sudo cp 000-default.conf example1.com.conf</li>
+<li>sudo cp 000-default.conf example2.com.conf</li>
+<li>nano example1.com.conf and put below code in it</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&lt;VirtualHost *:80&gt;
+<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;VirtualHost *:80&gt;
 ServerAdmin webmaster@example1.com
 ServerName example1.com
 ServerAlias www.example1.com
 DocumentRoot /var/www/example1.com/public_html
-ErrorLog <span class="si">${</span><span class="nv">APACHE_LOG_DIR</span><span class="si">}</span>/error.log
-CustomLog <span class="si">${</span><span class="nv">APACHE_LOG_DIR</span><span class="si">}</span>/access.log combined
+ErrorLog ${APACHE_LOG_DIR}/error.log
+CustomLog ${APACHE_LOG_DIR}/access.log combined
 &lt;/VirtualHost&gt;
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">nano</span> <span class="pre">example2.com.conf</span></code> and put below code in it</p></li>
+<li><code class="docutils literal notranslate"><span class="pre">nano</span> <span class="pre">example2.com.conf</span></code> and put below code in it</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&lt;VirtualHost *:80&gt;
+<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;VirtualHost *:80&gt;
 ServerAdmin webmaster@example1.com
 ServerName example2.com
 ServerAlias www.example2.com
 DocumentRoot /var/www/example2.com/public_html
-ErrorLog <span class="si">${</span><span class="nv">APACHE_LOG_DIR</span><span class="si">}</span>/error.log
-CustomLog <span class="si">${</span><span class="nv">APACHE_LOG_DIR</span><span class="si">}</span>/access.log combined
+ErrorLog ${APACHE_LOG_DIR}/error.log
+CustomLog ${APACHE_LOG_DIR}/access.log combined
 &lt;/VirtualHost&gt;
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">a2dissite</span> <span class="pre">000-default.conf</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">a2ensite</span> <span class="pre">example1.com.conf</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">a2ensite</span> <span class="pre">example2.com.conf</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">systemctl</span> <span class="pre">restart</span> <span class="pre">apache2</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">/var/www</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">nano</span> <span class="pre">example1.com/public_html/index.html</span></code> and put “Welcome to example1.com”</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">nano</span> <span class="pre">example2.com/public_html/index.html</span></code> and put “Welcome to example2.com”</p></li>
-<li><p>now you need to make host entries to your local machines.</p></li>
-<li><p>on ubuntu you need to open <code class="docutils literal notranslate"><span class="pre">/etc/hosts</span></code> file and make host entry like, Use <code class="docutils literal notranslate"><span class="pre">C:\Windows\System32\drivers\etc\hosts</span></code> if you are on windows</p></li>
-<li><p>xxx.xxx.xxx.xxx example1.com
+<li><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">a2dissite</span> <span class="pre">000-default.conf</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">a2ensite</span> <span class="pre">example1.com.conf</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">a2ensite</span> <span class="pre">example2.com.conf</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">systemctl</span> <span class="pre">restart</span> <span class="pre">apache2</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">/var/www</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">nano</span> <span class="pre">example1.com/public_html/index.html</span></code> and put “Welcome to example1.com”</li>
+<li><code class="docutils literal notranslate"><span class="pre">nano</span> <span class="pre">example2.com/public_html/index.html</span></code> and put “Welcome to example2.com”</li>
+<li>now you need to make host entries to your local machines.</li>
+<li>on ubuntu you need to open <code class="docutils literal notranslate"><span class="pre">/etc/hosts</span></code> file and make host entry like, Use <code class="docutils literal notranslate"><span class="pre">C:\Windows\System32\drivers\etc\hosts</span></code> if you are on windows</li>
+<li>xxx.xxx.xxx.xxx example1.com
 xxx.xxx.xxx.xxx www.example1.com
 xxx.xxx.xxx.xxx example2.com
 xxx.xxx.xxx.xxx www.example2.com
-Now your subdomains/virtual host are ready.</p></li>
+Now your subdomains/virtual host are ready.</li>
 </ul>
-</section>
-</section>
+</div>
+</div>
 
 
           </div>
@@ -97,7 +98,7 @@ Now your subdomains/virtual host are ready.</p></li>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="index.html">codeinfo</a></h1>
+<h1 class="logo"><a href="index.html">CodeInfo</a></h1>
 
 
 
@@ -107,7 +108,7 @@ Now your subdomains/virtual host are ready.</p></li>
 
 
 <h3>Navigation</h3>
-<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="php.html">PHP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="htaccess.html">Htaccess</a></li>
@@ -135,15 +136,17 @@ Now your subdomains/virtual host are ready.</p></li>
 </ul>
 </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
+  <h3>Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script type="text/javascript">$('#searchbox').show(0);</script>
 
 
 
@@ -157,10 +160,10 @@ Now your subdomains/virtual host are ready.</p></li>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2021, sanjay chaturvedi.
+      &copy;2022, Sanjay Chaturvedi.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.1.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.6</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

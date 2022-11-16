@@ -1,18 +1,19 @@
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
-    <title>Linux &#8212; codeinfo 1.4 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Linux &#8212; CodeInfo  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Digital Ocean" href="digitalocean.html" />
@@ -33,62 +34,62 @@
 
           <div class="body" role="main">
             
-  <section id="linux">
+  <div class="section" id="linux">
 <span id="id1"></span><h1>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h1>
-<section id="commands">
+<div class="section" id="commands">
 <h2>Commands<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">grep</span> <span class="pre">keyword</span> <span class="pre">/var/spool/cron/root</span> <span class="pre">|</span> <span class="pre">egrep</span> <span class="pre">-v</span> <span class="pre">^#</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">-v</span> <span class="pre">^$</span> <span class="pre">|</span> <span class="pre">awk</span> <span class="pre">'{print</span> <span class="pre">$1,$2,$3,$4,$5,$8}'</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">netstat.log.5</span> <span class="pre">|</span>&#160; <span class="pre">awk</span> <span class="pre">'$4</span> <span class="pre">~</span> <span class="pre">/:80$/</span> <span class="pre">{c++;print</span> <span class="pre">$5</span> <span class="pre">|</span> <span class="pre">&quot;sed</span> <span class="pre">'s/::ffff://'</span> <span class="pre">|</span> <span class="pre">sed</span> <span class="pre">'s/:.*$//'|</span> <span class="pre">sort</span> <span class="pre">|</span> <span class="pre">uniq</span> <span class="pre">-c</span> <span class="pre">|</span> <span class="pre">sort</span> <span class="pre">-n</span> <span class="pre">|</span> <span class="pre">tail</span> <span class="pre">-n</span> <span class="pre">10&quot;}</span> <span class="pre">END</span> <span class="pre">{print</span> <span class="pre">c}'</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">netstat</span> <span class="pre">-plantu</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">-c</span> <span class="pre">:1433</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ifconfig</span> <span class="pre">eth0</span></code></p></li>
-<li><p><strong>Print last 20 lines from the error_log file</strong>
-<code class="docutils literal notranslate"><span class="pre">tail</span> <span class="pre">-20</span>&#160;&#160; <span class="pre">/var/log/httpd/error_log</span></code></p></li>
-<li><p><strong>Get max number of client on apache configuration</strong>
-<code class="docutils literal notranslate"><span class="pre">grep</span> <span class="pre">-i</span> <span class="pre">maxclients</span> <span class="pre">/etc/httpd/conf/httpd.conf</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">/etc/my.cnf</span>&#160; <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">cache</span> <span class="pre">-i</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">-v</span> <span class="pre">^#</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">grep</span> <span class="pre">&quot;^|&quot;</span> <span class="pre">queries-pre-restart.txt</span> <span class="pre">|</span> <span class="pre">awk</span> <span class="pre">'{</span> <span class="pre">print</span> <span class="pre">$14</span> <span class="pre">}'</span> <span class="pre">|</span> <span class="pre">sort</span> <span class="pre">|</span> <span class="pre">uniq</span> <span class="pre">-c</span> <span class="pre">|</span> <span class="pre">sort</span> <span class="pre">-nr</span></code></p></li>
-<li><p><strong>Will make directory at nested level (it will create both directory)</strong>
-<code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">-p</span> <span class="pre">www/public_html</span></code></p></li>
-<li><p><strong>To compress all files of foldername</strong>
-<code class="docutils literal notranslate"><span class="pre">tar</span> <span class="pre">-cvzf</span> <span class="pre">docs.tar.gz</span> <span class="pre">/var/www/html/foldername</span></code></p></li>
-<li><p><strong>extract docs.tar.gz in docs folder</strong>
-<code class="docutils literal notranslate"><span class="pre">tar</span> <span class="pre">-xvzf</span> <span class="pre">docs.tar.gz</span></code></p></li>
-<li><p><strong>Symlink specific time on server</strong>
-<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">ln</span> <span class="pre">-s</span> <span class="pre">/usr/share/zoneinfo/US/Pacific</span> <span class="pre">/etc/localtime</span></code></p></li>
-<li><dl class="simple">
-<dt><strong>search text from file name</strong></dt><dd><p><code class="docutils literal notranslate"><span class="pre">grep</span> <span class="pre">word</span> <span class="pre">/mnt/data/filepath</span></code></p>
-</dd>
+<li><code class="docutils literal notranslate"><span class="pre">grep</span> <span class="pre">keyword</span> <span class="pre">/var/spool/cron/root</span> <span class="pre">|</span> <span class="pre">egrep</span> <span class="pre">-v</span> <span class="pre">^#</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">-v</span> <span class="pre">^$</span> <span class="pre">|</span> <span class="pre">awk</span> <span class="pre">'{print</span> <span class="pre">$1,$2,$3,$4,$5,$8}'</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">netstat.log.5</span> <span class="pre">|</span>&#160; <span class="pre">awk</span> <span class="pre">'$4</span> <span class="pre">~</span> <span class="pre">/:80$/</span> <span class="pre">{c++;print</span> <span class="pre">$5</span> <span class="pre">|</span> <span class="pre">&quot;sed</span> <span class="pre">'s/::ffff://'</span> <span class="pre">|</span> <span class="pre">sed</span> <span class="pre">'s/:.*$//'|</span> <span class="pre">sort</span> <span class="pre">|</span> <span class="pre">uniq</span> <span class="pre">-c</span> <span class="pre">|</span> <span class="pre">sort</span> <span class="pre">-n</span> <span class="pre">|</span> <span class="pre">tail</span> <span class="pre">-n</span> <span class="pre">10&quot;}</span> <span class="pre">END</span> <span class="pre">{print</span> <span class="pre">c}'</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">netstat</span> <span class="pre">-plantu</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">-c</span> <span class="pre">:1433</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">ifconfig</span> <span class="pre">eth0</span></code></li>
+<li><strong>Print last 20 lines from the error_log file</strong>
+<code class="docutils literal notranslate"><span class="pre">tail</span> <span class="pre">-20</span>&#160;&#160; <span class="pre">/var/log/httpd/error_log</span></code></li>
+<li><strong>Get max number of client on apache configuration</strong>
+<code class="docutils literal notranslate"><span class="pre">grep</span> <span class="pre">-i</span> <span class="pre">maxclients</span> <span class="pre">/etc/httpd/conf/httpd.conf</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">/etc/my.cnf</span>&#160; <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">cache</span> <span class="pre">-i</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">-v</span> <span class="pre">^#</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">grep</span> <span class="pre">&quot;^|&quot;</span> <span class="pre">queries-pre-restart.txt</span> <span class="pre">|</span> <span class="pre">awk</span> <span class="pre">'{</span> <span class="pre">print</span> <span class="pre">$14</span> <span class="pre">}'</span> <span class="pre">|</span> <span class="pre">sort</span> <span class="pre">|</span> <span class="pre">uniq</span> <span class="pre">-c</span> <span class="pre">|</span> <span class="pre">sort</span> <span class="pre">-nr</span></code></li>
+<li><strong>Will make directory at nested level (it will create both directory)</strong>
+<code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">-p</span> <span class="pre">www/public_html</span></code></li>
+<li><strong>To compress all files of foldername</strong>
+<code class="docutils literal notranslate"><span class="pre">tar</span> <span class="pre">-cvzf</span> <span class="pre">docs.tar.gz</span> <span class="pre">/var/www/html/foldername</span></code></li>
+<li><strong>extract docs.tar.gz in docs folder</strong>
+<code class="docutils literal notranslate"><span class="pre">tar</span> <span class="pre">-xvzf</span> <span class="pre">docs.tar.gz</span></code></li>
+<li><strong>Symlink specific time on server</strong>
+<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">ln</span> <span class="pre">-s</span> <span class="pre">/usr/share/zoneinfo/US/Pacific</span> <span class="pre">/etc/localtime</span></code></li>
+<li><dl class="first docutils">
+<dt><strong>search text from file name</strong></dt>
+<dd><code class="docutils literal notranslate"><span class="pre">grep</span> <span class="pre">word</span> <span class="pre">/mnt/data/filepath</span></code></dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt><strong>Mount a Drive</strong></dt><dd><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">mount</span> <span class="pre">/dev/xvdf</span> <span class="pre">/mnt/data/</span></code></p>
-</dd>
+<li><dl class="first docutils">
+<dt><strong>Mount a Drive</strong></dt>
+<dd><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">mount</span> <span class="pre">/dev/xvdf</span> <span class="pre">/mnt/data/</span></code></dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt><strong>UnMount a Drive</strong></dt><dd><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">umount</span> <span class="pre">--verbose</span> <span class="pre">/mnt/data/</span></code></p>
-</dd>
+<li><dl class="first docutils">
+<dt><strong>UnMount a Drive</strong></dt>
+<dd><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">umount</span> <span class="pre">--verbose</span> <span class="pre">/mnt/data/</span></code></dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt><strong>Blank an email</strong></dt><dd><p><code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">/var/spool/mail/root</span></code></p>
-</dd>
+<li><dl class="first docutils">
+<dt><strong>Blank an email</strong></dt>
+<dd><code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">/var/spool/mail/root</span></code></dd>
 </dl>
 </li>
 </ul>
 <div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">/tmp</span></code>
+<p class="first admonition-title">Tip</p>
+<p class="last"><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">/tmp</span></code>
 <code class="docutils literal notranslate"><span class="pre">curl</span> <span class="pre">-sS</span> <span class="pre">https://getcomposer.org/installer</span> <span class="pre">|</span> <span class="pre">php</span></code>
 <code class="docutils literal notranslate"><span class="pre">Move</span> <span class="pre">it</span> <span class="pre">to</span> <span class="pre">/usr/local/bin/</span></code>
 <code class="docutils literal notranslate"><span class="pre">mv</span> <span class="pre">composer.phar</span> <span class="pre">/usr/local/bin/composer</span></code></p>
 </div>
-</section>
-<section id="logcommands">
+</div>
+<div class="section" id="logcommands">
 <h2>logCommands<a class="headerlink" href="#logcommands" title="Permalink to this headline">¶</a></h2>
-</section>
-<section id="cronjobs">
+</div>
+<div class="section" id="cronjobs">
 <h2>Cronjobs<a class="headerlink" href="#cronjobs" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example of job definition:</span>
 <span class="c1"># .---------------- minute (0 - 59)</span>
@@ -107,18 +108,18 @@
 <span class="o">[</span> <span class="s2">&quot;</span><span class="k">$(</span>/bin/date +<span class="se">\%</span>d -d tomorrow<span class="k">)</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;01&quot;</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> /usr/local/bin/php /var/www/html/projectname/yourphpfile
 </pre></div>
 </div>
-</section>
-<section id="generate-ppk-file">
+</div>
+<div class="section" id="generate-ppk-file">
 <h2>Generate PPK file<a class="headerlink" href="#generate-ppk-file" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Download Puttygen software from this <a class="reference external" href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html">link</a></p></li>
-<li><p>Install it</p></li>
-<li><p>Click on Conversion Tab</p></li>
-<li><p>Upload your .pem file</p></li>
-<li><p>Click on <em>Save Private key</em> to generate PPK file.</p></li>
+<li>Download Puttygen software from this <a class="reference external" href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html">link</a></li>
+<li>Install it</li>
+<li>Click on Conversion Tab</li>
+<li>Upload your .pem file</li>
+<li>Click on <em>Save Private key</em> to generate PPK file.</li>
 </ul>
-</section>
-</section>
+</div>
+</div>
 
 
           </div>
@@ -127,7 +128,7 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="index.html">codeinfo</a></h1>
+<h1 class="logo"><a href="index.html">CodeInfo</a></h1>
 
 
 
@@ -137,7 +138,7 @@
 
 
 <h3>Navigation</h3>
-<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="php.html">PHP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="htaccess.html">Htaccess</a></li>
@@ -168,15 +169,17 @@
 </ul>
 </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
+  <h3>Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script type="text/javascript">$('#searchbox').show(0);</script>
 
 
 
@@ -190,10 +193,10 @@
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2021, sanjay chaturvedi.
+      &copy;2022, Sanjay Chaturvedi.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.1.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.6</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
