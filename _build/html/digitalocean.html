@@ -1,114 +1,51 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Ocean &mdash; code 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=df849a69" />
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Digital Ocean &#8212; CodeInfo  documentation</title>
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="AWS" href="aws.html" />
-    <link rel="prev" title="Linux" href="linux.html" />
-   
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+    <link rel="prev" title="Linux" href="linux.html" /> 
+</head>
 
-  </head><body>
-  
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
           
-
-          <div class="body" role="main">
-            
-  <div class="section" id="digital-ocean">
-<span id="digitalocean"></span><h1>Digital Ocean<a class="headerlink" href="#digital-ocean" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="install-ubuntu">
-<h2>Install Ubuntu<a class="headerlink" href="#install-ubuntu" title="Permalink to this headline">¶</a></h2>
-<p>Open terminal using ctrl+alt+T in ubuntu, putty on windows. Connect with ssh if you are going to creating virtual host on ubuntu server.</p>
-<ul class="simple">
-<li>sudo apt-get update  (it will update all system libraries)</li>
-<li>cd /var/www          (Move to www path)</li>
-<li>sudo mkdir -p example1.com/public_html    (it will create both directory example1.com and example1.com/public_html)</li>
-<li>sudo mkdir -p example2.com/public_html    (it will create both directory example2.com and example2.com/public_html)</li>
-<li>cd /etc/apache2/sites-available/</li>
-<li>sudo cp 000-default.conf example1.com.conf</li>
-<li>sudo cp 000-default.conf example2.com.conf</li>
-<li>nano example1.com.conf and put below code in it</li>
-</ul>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;VirtualHost *:80&gt;
-ServerAdmin webmaster@example1.com
-ServerName example1.com
-ServerAlias www.example1.com
-DocumentRoot /var/www/example1.com/public_html
-ErrorLog ${APACHE_LOG_DIR}/error.log
-CustomLog ${APACHE_LOG_DIR}/access.log combined
-&lt;/VirtualHost&gt;
-</pre></div>
-</div>
-<ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">nano</span> <span class="pre">example2.com.conf</span></code> and put below code in it</li>
-</ul>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;VirtualHost *:80&gt;
-ServerAdmin webmaster@example1.com
-ServerName example2.com
-ServerAlias www.example2.com
-DocumentRoot /var/www/example2.com/public_html
-ErrorLog ${APACHE_LOG_DIR}/error.log
-CustomLog ${APACHE_LOG_DIR}/access.log combined
-&lt;/VirtualHost&gt;
-</pre></div>
-</div>
-<ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">a2dissite</span> <span class="pre">000-default.conf</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">a2ensite</span> <span class="pre">example1.com.conf</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">a2ensite</span> <span class="pre">example2.com.conf</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">systemctl</span> <span class="pre">restart</span> <span class="pre">apache2</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">/var/www</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">nano</span> <span class="pre">example1.com/public_html/index.html</span></code> and put “Welcome to example1.com”</li>
-<li><code class="docutils literal notranslate"><span class="pre">nano</span> <span class="pre">example2.com/public_html/index.html</span></code> and put “Welcome to example2.com”</li>
-<li>now you need to make host entries to your local machines.</li>
-<li>on ubuntu you need to open <code class="docutils literal notranslate"><span class="pre">/etc/hosts</span></code> file and make host entry like, Use <code class="docutils literal notranslate"><span class="pre">C:\Windows\System32\drivers\etc\hosts</span></code> if you are on windows</li>
-<li>xxx.xxx.xxx.xxx example1.com
-xxx.xxx.xxx.xxx www.example1.com
-xxx.xxx.xxx.xxx example2.com
-xxx.xxx.xxx.xxx www.example2.com
-Now your subdomains/virtual host are ready.</li>
-</ul>
-</div>
-</div>
-
-
-          </div>
           
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="index.html">CodeInfo</a></h1>
-
-
-
-
-
-
-
-
-<h3>Navigation</h3>
-<p class="caption"><span class="caption-text">Contents:</span></p>
+          <a href="index.html" class="icon icon-home">
+            code
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="php.html">PHP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="htaccess.html">Htaccess</a></li>
@@ -126,53 +63,116 @@ Now your subdomains/virtual host are ready.</li>
 <li class="toctree-l1"><a class="reference internal" href="aws-best.html">AWS Best practise</a></li>
 </ul>
 
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="linux.html" title="previous chapter">Linux</a></li>
-      <li>Next: <a href="aws.html" title="next chapter">AWS</a></li>
-  </ul></li>
-</ul>
-</div>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    </div>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-
-
-
-
-
-
-
-
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;2022, Sanjay Chaturvedi.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.6</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
-      
-      |
-      <a href="_sources/digitalocean.rst.txt"
-          rel="nofollow">Page source</a>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">code</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Digital Ocean</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/digitalocean.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="digital-ocean">
+<span id="digitalocean"></span><h1>Digital Ocean<a class="headerlink" href="#digital-ocean" title="Link to this heading"></a></h1>
+<section id="install-ubuntu">
+<h2>Install Ubuntu<a class="headerlink" href="#install-ubuntu" title="Link to this heading"></a></h2>
+<p>Open terminal using ctrl+alt+T in ubuntu, putty on windows. Connect with ssh if you are going to creating virtual host on ubuntu server.</p>
+<ul class="simple">
+<li><p>sudo apt-get update  (it will update all system libraries)</p></li>
+<li><p>cd /var/www          (Move to www path)</p></li>
+<li><p>sudo mkdir -p example1.com/public_html    (it will create both directory example1.com and example1.com/public_html)</p></li>
+<li><p>sudo mkdir -p example2.com/public_html    (it will create both directory example2.com and example2.com/public_html)</p></li>
+<li><p>cd /etc/apache2/sites-available/</p></li>
+<li><p>sudo cp 000-default.conf example1.com.conf</p></li>
+<li><p>sudo cp 000-default.conf example2.com.conf</p></li>
+<li><p>nano example1.com.conf and put below code in it</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&lt;VirtualHost<span class="w"> </span>*:80&gt;
+ServerAdmin<span class="w"> </span>webmaster@example1.com
+ServerName<span class="w"> </span>example1.com
+ServerAlias<span class="w"> </span>www.example1.com
+DocumentRoot<span class="w"> </span>/var/www/example1.com/public_html
+ErrorLog<span class="w"> </span><span class="si">${</span><span class="nv">APACHE_LOG_DIR</span><span class="si">}</span>/error.log
+CustomLog<span class="w"> </span><span class="si">${</span><span class="nv">APACHE_LOG_DIR</span><span class="si">}</span>/access.log<span class="w"> </span>combined
+&lt;/VirtualHost&gt;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">nano</span> <span class="pre">example2.com.conf</span></code> and put below code in it</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&lt;VirtualHost<span class="w"> </span>*:80&gt;
+ServerAdmin<span class="w"> </span>webmaster@example1.com
+ServerName<span class="w"> </span>example2.com
+ServerAlias<span class="w"> </span>www.example2.com
+DocumentRoot<span class="w"> </span>/var/www/example2.com/public_html
+ErrorLog<span class="w"> </span><span class="si">${</span><span class="nv">APACHE_LOG_DIR</span><span class="si">}</span>/error.log
+CustomLog<span class="w"> </span><span class="si">${</span><span class="nv">APACHE_LOG_DIR</span><span class="si">}</span>/access.log<span class="w"> </span>combined
+&lt;/VirtualHost&gt;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">a2dissite</span> <span class="pre">000-default.conf</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">a2ensite</span> <span class="pre">example1.com.conf</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">a2ensite</span> <span class="pre">example2.com.conf</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">systemctl</span> <span class="pre">restart</span> <span class="pre">apache2</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">/var/www</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nano</span> <span class="pre">example1.com/public_html/index.html</span></code> and put “Welcome to example1.com”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nano</span> <span class="pre">example2.com/public_html/index.html</span></code> and put “Welcome to example2.com”</p></li>
+<li><p>now you need to make host entries to your local machines.</p></li>
+<li><p>on ubuntu you need to open <code class="docutils literal notranslate"><span class="pre">/etc/hosts</span></code> file and make host entry like, Use <code class="docutils literal notranslate"><span class="pre">C:\Windows\System32\drivers\etc\hosts</span></code> if you are on windows</p></li>
+<li><p>xxx.xxx.xxx.xxx example1.com
+xxx.xxx.xxx.xxx www.example1.com
+xxx.xxx.xxx.xxx example2.com
+xxx.xxx.xxx.xxx www.example2.com
+Now your subdomains/virtual host are ready.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="linux.html" class="btn btn-neutral float-left" title="Linux" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="aws.html" class="btn btn-neutral float-right" title="AWS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
-    
+  <hr/>
 
-    
-  </body>
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, sanjay.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
 </html>
