@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MySQL &mdash; codeinfo 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=df849a69" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="GIT" href="git.html" />
+    <link rel="prev" title="Htaccess" href="htaccess.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            codeinfo
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="php.html">PHP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="htaccess.html">Htaccess</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">MySQL</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#mysql-backup-restore">Mysql Backup/Restore</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="git.html">GIT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nodejs.html">NodeJS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linux.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digitalocean.html">Digital Ocean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aws.html">AWS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gcloud.html">Google Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docker.html">Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aws-best.html">AWS Best practise</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">codeinfo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">MySQL</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/mysql.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mysql">
+<span id="id1"></span><h1>MySQL<a class="headerlink" href="#mysql" title="Link to this heading"></a></h1>
+<p><strong>Convert DateTime in UnixTimeStamp</strong>
+<code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*,from_unixtime(date_added)</span> <span class="pre">FROM</span> <span class="pre">`TABLE_NAME`</span>&#160; <span class="pre">order</span> <span class="pre">by</span> <span class="pre">date_added</span> <span class="pre">desc</span></code></p>
+<p><strong>Space consume by a table</strong>
+<code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">table_schema</span> <span class="pre">&quot;Data</span> <span class="pre">Base</span> <span class="pre">Name&quot;,sum(</span> <span class="pre">data_length</span> <span class="pre">+</span> <span class="pre">index_length</span> <span class="pre">)</span> <span class="pre">/</span> <span class="pre">1024</span> <span class="pre">/</span> <span class="pre">1024</span> <span class="pre">/1024</span> <span class="pre">&quot;Used</span> <span class="pre">GB&quot;</span> <span class="pre">FROM</span> <span class="pre">information_schema.TABLES</span> <span class="pre">GROUP</span> <span class="pre">BY</span> <span class="pre">table_schema</span> <span class="pre">;</span></code></p>
+<p><strong>Character Set</strong>
+<code class="docutils literal notranslate"><span class="pre">utf8mb4_unicode_ci</span></code></p>
+<p><strong>Set a login path using terminal/putty</strong>
+<code class="docutils literal notranslate"><span class="pre">mysql_config_editor</span> <span class="pre">set</span> <span class="pre">--login-path=anyname</span>&#160; <span class="pre">--host=localhost</span> <span class="pre">--port=3306</span> <span class="pre">--socket=/var/run/mysqld/mysqld.sock</span> <span class="pre">--user=databaseuser</span> <span class="pre">--password</span></code></p>
+<p><strong>How to fix a MySQL Failed to Start error</strong>
+Please visit <a class="reference external" href="https://lowendbox.com/blog/how%E2%80%8B-%E2%80%8Bto%E2%80%8B-%E2%80%8Bfix%E2%80%8B-%E2%80%8Ba%E2%80%8B-%E2%80%8Bmysql%E2%80%8B-%E2%80%8Bfailed%E2%80%8B-%E2%80%8Bto%E2%80%8B-%E2%80%8Bstart%E2%80%8B-%E2%80%8Berror/">LowendBox</a></p>
+<p><strong>Give Permission to mysqluser</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>CEATE<span class="w"> </span>USER<span class="w"> </span><span class="s1">&#39;ankit&#39;</span>@<span class="s1">&#39;%&#39;</span><span class="w"> </span>IDENTIFIED<span class="w"> </span>WITH<span class="w"> </span>mysql_native_password<span class="w"> </span>AS<span class="w"> </span><span class="s1">&#39;***&#39;</span><span class="p">;</span>
+GRANT<span class="w"> </span>ALL<span class="w"> </span>PRIVILEGES<span class="w"> </span>ON<span class="w"> </span>*.*<span class="w"> </span>TO<span class="w"> </span><span class="s1">&#39;ankit&#39;</span>@<span class="s1">&#39;%&#39;</span><span class="w"> </span>REQUIRE<span class="w"> </span>NONE<span class="w"> </span>WITH<span class="w"> </span>GRANT<span class="w"> </span>OPTION<span class="w"> </span>MAX_QUERIES_PER_HOUR<span class="w"> </span><span class="m">0</span><span class="w"> </span>MAX_CONNECTIONS_PER_HOUR<span class="w"> </span><span class="m">0</span><span class="w"> </span>MAX_UPDATES_PER_HOUR<span class="w"> </span><span class="m">0</span><span class="w"> </span>MAX_USER_CONNECTIONS<span class="w"> </span><span class="m">0</span><span class="p">;</span>
+GRANT<span class="w"> </span>ALL<span class="w"> </span>PRIVILEGES<span class="w"> </span>ON<span class="w"> </span><span class="sb">`</span>adopted<span class="sb">`</span>.*<span class="w"> </span>TO<span class="w"> </span><span class="s1">&#39;ankit&#39;</span>@<span class="s1">&#39;%&#39;</span><span class="w"> </span>WITH<span class="w"> </span>GRANT<span class="w"> </span>OPTION<span class="p">;</span>
+</pre></div>
+</div>
+<section id="mysql-backup-restore">
+<h2>Mysql Backup/Restore<a class="headerlink" href="#mysql-backup-restore" title="Link to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Download<span class="w"> </span>full<span class="w"> </span>database<span class="w"> </span><span class="o">(</span>.gz<span class="w"> </span>extention<span class="o">)</span>
+mysqldump<span class="w"> </span>-h<span class="o">[</span>host<span class="o">]</span><span class="w"> </span>-u<span class="o">[</span>user<span class="o">]</span><span class="w"> </span>-p<span class="o">[</span>password<span class="o">]</span><span class="w"> </span><span class="o">[</span>database<span class="o">]</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>gzip<span class="w"> </span>-c<span class="w"> </span><span class="p">|</span><span class="w"> </span>cat<span class="w"> </span>&gt;<span class="w"> </span>/var/www/html/mysqldump_<span class="o">[</span>database<span class="o">]</span>_<span class="k">$(</span>date<span class="w"> </span>+%Y%m%d_%H%M%S<span class="k">)</span>.sql.gz
+
+Download<span class="w"> </span>full<span class="w"> </span>database<span class="w"> </span>with<span class="w"> </span>ssl<span class="w"> </span>enabled<span class="w"> </span><span class="o">(</span>.gz<span class="w"> </span>extention<span class="o">)</span>
+mysqldump<span class="w"> </span>-h<span class="o">[</span>host<span class="o">]</span><span class="w"> </span>-u<span class="o">[</span>user<span class="o">]</span><span class="w"> </span>-p<span class="o">[</span>password<span class="o">]</span><span class="w"> </span><span class="o">[</span>database<span class="o">]</span><span class="w"> </span>--ssl-ca<span class="o">=[</span>.PEM<span class="w"> </span>file<span class="o">]</span><span class="w"> </span><span class="o">[</span>database<span class="o">]</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>gzip<span class="w"> </span>-c<span class="w"> </span><span class="p">|</span><span class="w"> </span>cat<span class="w"> </span>&gt;<span class="w"> </span>/var/www/html/mysqldump_<span class="o">[</span>database<span class="o">]</span>_<span class="k">$(</span>date<span class="w"> </span>+%Y%m%d_%H%M%S<span class="k">)</span>.sql.gz
+
+Download<span class="w"> </span>Specific<span class="w"> </span>database<span class="w"> </span>table<span class="w"> </span><span class="o">(</span>.gz<span class="w"> </span>extention<span class="o">)</span>
+mysqldump<span class="w"> </span>-h<span class="o">[</span>host<span class="o">]</span><span class="w"> </span>-u<span class="o">[</span>user<span class="o">]</span><span class="w"> </span>-p<span class="o">[</span>password<span class="o">]</span><span class="w"> </span><span class="o">[</span>database<span class="o">]</span><span class="w"> </span><span class="o">[</span>tablename<span class="o">]</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>gzip<span class="w"> </span>-c<span class="w"> </span><span class="p">|</span><span class="w"> </span>cat<span class="w"> </span>&gt;<span class="w"> </span>/var/www/html/mysqldump_<span class="o">[</span>database<span class="o">]</span>_<span class="o">[</span>tablename<span class="o">]</span>_<span class="k">$(</span>date<span class="w"> </span>+%Y%m%d_%H%M%S<span class="k">)</span>.sql.gz
+
+Download<span class="w"> </span>Database<span class="w"> </span>after<span class="w"> </span>ignore<span class="w"> </span>some<span class="w"> </span>table<span class="w"> </span><span class="o">(</span>.gz<span class="w"> </span>extention<span class="o">)</span>**
+mysqldump<span class="w"> </span>-h<span class="o">[</span>host<span class="o">]</span><span class="w"> </span>-u<span class="o">[</span>user<span class="o">]</span><span class="w"> </span>-p<span class="o">[</span>password<span class="o">]</span><span class="w"> </span><span class="o">[</span>database<span class="o">]</span><span class="w"> </span>--ignore-table<span class="o">=[</span>table1<span class="o">]</span><span class="w"> </span>--ignore-table<span class="o">=[</span>table2<span class="o">]</span><span class="p">|</span><span class="w"> </span>gzip<span class="w"> </span>-c<span class="w"> </span><span class="p">|</span><span class="w"> </span>cat<span class="w"> </span>&gt;<span class="w"> </span>/var/www/html/mysqldump_<span class="o">[</span>database<span class="o">]</span>_<span class="k">$(</span>date<span class="w"> </span>+%Y%m%d_%H%M%S<span class="k">)</span>.sql.gz
+
+Restore<span class="w"> </span>Backup<span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>Database
+mysql<span class="w"> </span>-h<span class="o">[</span>host<span class="o">]</span><span class="w"> </span>-u<span class="o">[</span>user<span class="o">]</span><span class="w"> </span>-p<span class="o">[</span>password<span class="o">]</span><span class="w"> </span><span class="o">[</span>database<span class="o">]</span><span class="w"> </span>&lt;<span class="w"> </span>/var/www/html/database.sql
+
+Restore<span class="w"> </span>Database<span class="w"> </span>using<span class="w"> </span>.sql.gz<span class="w"> </span>file<span class="w"> </span>with<span class="w"> </span>ssl<span class="w"> </span>enabled
+zcat<span class="w"> </span>database.sql.gz<span class="w"> </span><span class="p">|</span><span class="w"> </span>mysql<span class="w"> </span>-h<span class="o">[</span>host<span class="o">]</span><span class="w"> </span>-u<span class="o">[</span>user<span class="o">]</span><span class="w"> </span>-p<span class="o">[</span>password<span class="o">]</span><span class="w"> </span>--ssl-ca<span class="o">=[</span>.PEM<span class="w"> </span>file<span class="o">]</span><span class="w"> </span><span class="o">[</span>database<span class="o">]</span>
+
+Restore<span class="w"> </span>Database<span class="w"> </span>using<span class="w"> </span>.sql.gz<span class="w"> </span>file
+zcat<span class="w"> </span>database.sql.gz<span class="w"> </span><span class="p">|</span><span class="w"> </span>mysql<span class="w"> </span>-h<span class="o">[</span>host<span class="o">]</span><span class="w"> </span>-u<span class="o">[</span>user<span class="o">]</span><span class="w"> </span>-p<span class="o">[</span>password<span class="o">]</span><span class="w"> </span><span class="o">[</span>database<span class="o">]</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="htaccess.html" class="btn btn-neutral float-left" title="Htaccess" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="git.html" class="btn btn-neutral float-right" title="GIT" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, snajay.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
