@@ -32,7 +32,7 @@ html_css_files = [
     'css/custom.css',
 ]
 
-new_dir_path_recursive = 'readthedocs/html'
+new_dir_path_recursive = 'readthedocs'
 print(os.listdir(path='.'))
 os.makedirs(new_dir_path_recursive, exist_ok=True)
 print(os.listdir(path='.'))
