@@ -33,9 +33,9 @@ html_css_files = [
 ]
 
 new_dir_path_recursive = 'readthedocs/html'
-os.listdir(path='.')
+print(os.listdir(path='.'))
 os.makedirs(new_dir_path_recursive, exist_ok=True)
-os.listdir(path='.')
+print(os.listdir(path='.'))
 
 # Specify the source and destination directories
 source_directory = '_build/html'
