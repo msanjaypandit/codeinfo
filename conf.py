@@ -39,7 +39,7 @@ os.mkdir("readthedocs/html", mode=0o777)  # Read and execute for all, write for 
 
 # Specify the source and destination directories
 source_directory = '_build/html'
-destination_directory = '/readthedocs/html'
+destination_directory = 'readthedocs/html'
 
 # Copy the directory and its contents
 shutil.copytree(source_directory, destination_directory)
