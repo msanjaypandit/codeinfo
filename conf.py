@@ -32,10 +32,10 @@ html_css_files = [
     'css/custom.css',
 ]
 
-
-os.mkdir("readthedocs", mode=0o777)  # Read and execute for all, write for owner only
-
-os.mkdir("readthedocs/html", mode=0o777)  # Read and execute for all, write for owner only
+new_dir_path_recursive = 'readthedocs/html'
+os.listdir(path='.')
+os.makedirs(new_dir_path_recursive, exist_ok=True)
+os.listdir(path='.')
 
 # Specify the source and destination directories
 source_directory = '_build/html'
