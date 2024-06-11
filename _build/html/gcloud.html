@@ -4,10 +4,10 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Htaccess &mdash; codeinfo 1.0 documentation</title>
+  <title>Google Cloud &mdash; codeinfo 1.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
+      <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=f36bc7d1" />
 
   
   <!--[if lt IE 9]>
@@ -21,7 +21,9 @@
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Docker" href="docker.html" />
+    <link rel="prev" title="AWS" href="aws.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -43,15 +45,21 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <!-- Local TOC -->
-              <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">Htaccess</a><ul>
-<li><a class="reference internal" href="#ssl-redirection">SSL Redirection</a></li>
-<li><a class="reference internal" href="#test">Test</a></li>
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="php.html">PHP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="htaccess.html">Htaccess</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mysql.html">MySQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="git.html">GIT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nodejs.html">NodeJS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linux.html">Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="digitalocean.html">Digital Ocean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aws.html">AWS</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Google Cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docker.html">Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aws-best.html">AWS Best practise</a></li>
 </ul>
-</li>
-</ul>
-</div>
+
         </div>
       </div>
     </nav>
@@ -66,9 +74,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Htaccess</li>
+      <li class="breadcrumb-item active">Google Cloud</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/htaccess.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/gcloud.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -76,29 +84,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="htaccess">
-<h1>Htaccess<a class="headerlink" href="#htaccess" title="Link to this heading"></a></h1>
-<section id="ssl-redirection">
-<h2>SSL Redirection<a class="headerlink" href="#ssl-redirection" title="Link to this heading"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">##Redirection to https file**</span>
-RewriteCond<span class="w"> </span>%<span class="o">{</span>HTTPS<span class="o">}</span><span class="w"> </span>off
-RewriteRule<span class="w"> </span>.*<span class="w"> </span>https://%<span class="o">{</span>HTTP_HOST<span class="o">}</span>%<span class="o">{</span>REQUEST_URI<span class="o">}</span><span class="w"> </span><span class="o">[</span>L,R<span class="o">=</span><span class="m">301</span><span class="o">]</span>
-
-<span class="c1">##Redirection to https and www page**</span>
-RewriteCond<span class="w"> </span>%<span class="o">{</span>HTTP_HOST<span class="o">}</span><span class="w"> </span>!^www<span class="se">\.</span><span class="w"> </span><span class="o">[</span>NC<span class="o">]</span>
-RewriteRule<span class="w"> </span>.*<span class="w"> </span>https://www.%<span class="o">{</span>HTTP_HOST<span class="o">}</span>%<span class="o">{</span>REQUEST_URI<span class="o">}</span><span class="w"> </span><span class="o">[</span>L,R<span class="o">=</span><span class="m">301</span><span class="o">]</span>
-</pre></div>
-</div>
-</section>
-<section id="test">
-<h2>Test<a class="headerlink" href="#test" title="Link to this heading"></a></h2>
-</section>
+  <section id="google-cloud">
+<span id="gcloud"></span><h1>Google Cloud<a class="headerlink" href="#google-cloud" title="Link to this heading"></a></h1>
 </section>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="aws.html" class="btn btn-neutral float-left" title="AWS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="docker.html" class="btn btn-neutral float-right" title="Docker" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

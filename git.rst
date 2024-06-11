@@ -3,31 +3,36 @@
 GIT
 ============
 
-GIT Basics
+Basics
 ----------
 
-CREATE REPOSITORIES
-^^^^^^^^^^^^^^^^^^^
-*if your repo is blank*
+Use any git provider such as **Github/Gitlab/Bitbucket/Amazon Codecommit** and create a blank repository. You will receive two url, one url is **httpurl** and second will be **sshurl**. httpurl need username and password or token, while sshurl need private and publickey to connect. As this is blank repository, we need to put our code files into it.
 
-``git init``
- * Use this code to initiate git in a Directory.
+``ssh-keygen -t rsa  -C "emailid"``
+ * To generate SSH key for bitbucket
 
-``git remote add origin git@github.com:User/UserRepo.git``
- * Use this code to link your directory to git url.
+*Open your codefiles folder using git bash/terminal. Now connect your code with the repository using below comments, it will work in both cases,either your code is blank or not blank on your machine*
 
-CREATE REPOSITORIES
-^^^^^^^^^^^^^^^^^^^
-*if your repo is not blank*
+Connect with GIT repository
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+``git init`` 
+  * Use this code to initiate git in a Directory. 
+ 
+``git remote add origin <httpurl/sshurl>`` 
+  * Use this code to link your directory to git url. 
+  
+
+*if you receive repo details from your client and it is blank*
 
 ``git clone user@gitpath.git``
  * git clone allow you to get all files of git in a directory having name gitpath
 
-``git clone user@gitpath.git  newdoc``
- * git clone allow you to get all files of git in a directory having name newdoc
+``git clone user@gitpath.git  directory-name``
+ * git clone allow you to get all files of git in a directory with the name 'directory-name'
 
-CONFIGURE YOUR GIT REPO
-^^^^^^^^^^^^^^^^^^^^^^^
+Configure your GIT on your machine
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``git config --global user.name "[name]"``
   * Sets the name you want atached to your commit transactions
@@ -38,8 +43,8 @@ CONFIGURE YOUR GIT REPO
 ``git config``
  * Use it to view git config settings.
 
-MAKE CHANGES
-^^^^^^^^^^^^
+When you complete your code
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``git diff``
   * Shows file differences not yet staged
@@ -61,7 +66,7 @@ MAKE CHANGES
 ``git diff --staged``
   * Shows file differences between staging and the last file version
 
-``git reset [file]``
+``git reset [filename]``
   * Unstages the file, but preserve its contents
 
 ``git commit``
@@ -75,7 +80,7 @@ MAKE CHANGES
 
   git commit -m "Your message"
 
-``git push``
+``git push`` or ``git push origin master``
  * Run the git push command to push your changes to the repository. There are a variety of ways you can tweak this, as you can combine the push command with exceptions.
  * On its own, git push makes changes to the repository and all of its associations.
  * The git push `<remote> <branch>` command will push the changes on `<branch>` from your local repository to `<remote>`, which is usually the repository on a server  
@@ -86,22 +91,43 @@ MAKE CHANGES
 
  git push origin master
 
- git push origin new-feature
+ git push origin <branch-name>
 
-GROUP CHANGES
+Branches
+----------
+
+Branch Basics
 ^^^^^^^^^^^^^
 
 ``git branch``
   * Lists all local branches in the current repository
 
-``git branch -b [branchName]``
-  * Create a new branch BranchName
+.. Tip::
+
+ Your default branch can be 'main' or 'master' depends on GIT service provider
+
+``git branch <branch-Name>``
+  * Create a new branch 'branch-Name'
+
+``git checkout -b <branch-Name>``
+ * Create a new branch called “branch-Name” and move to it.
+ * Got an idea for a new feature? Enter git checkout -b new-feature to create a new branch called “new-feature” and open it. 
+ * The new branch allows you to work in parallel with your colleagues, keeping your code separate from theirs during the time you’re working on that branch.
+ * When you’re ready to share your work, you can push your branch to a remote repo or merge it back into the main branch (usually master/main).
+
+``git branch -d <branch-Name>``
+  * Deletes the specified branch “branch-Name”
+
+:ref:`when-you-complete-your-code`
+
+Work with specific branch and dafault branch
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``git checkout master``
  * git checkout allows you to move between branches and potentially restore tree files.
  * The command git checkout master switches you to the master branch, which is always the best place to start before making changes to your repo.
 
-``git checkout [branchName]``
+``git checkout <branch-Name>``
   * To move in BranchName
 
 ``git pull origin master``
@@ -109,25 +135,21 @@ GROUP CHANGES
  * A git pull is actually a combination of git fetch, which grabs all the latest  information, and git merge, which merges the two histories together. 
  * Always run git pull origin master before starting work on a repository.
 
-``checkout -b branchname``
- * Create a new branch called “branchname” and move to it.
- * Got an idea for a new feature? Enter git checkout -b new-feature to create a new branch called “new-feature” and open it. 
- * The new branch allows you to work in parallel with your colleagues, keeping your code separate from theirs during the time you’re working on that branch.
- * When you’re ready to share your work, you can push your branch to a remote repo or merge it back into the main branch (usually master).
 
-``git merge [branch]``
+``git merge <branch-Name2>``
   * Combines the specified branch’s history into the current branch
 
-``git branch -d [branch-name]``
-  * Deletes the specified branch
    
 ``git merge --abort``
  * It will abort merging issue.
 
-REFACTOR FILENAMES
+Other common working
+--------------------
+
+Refactor filenames
 ^^^^^^^^^^^^^^^^^^
 
-``git rm [file]``
+``git rm <file-name>``
  * Deletes the file from the working directory and stages the deletion
 
 ``git rm --cached [file]``
@@ -136,7 +158,7 @@ REFACTOR FILENAMES
 ``git mv [file-original] [file-renamed]``
  * Changes the file name and prepares it for commit
 
-SAVE FRAGMENTS
+Save fragments
 ^^^^^^^^^^^^^^
 ``git stash``
  * Temporarily stores all modified tracked files
@@ -150,7 +172,7 @@ SAVE FRAGMENTS
 ``git stash drop``
  * Discards the most recently stashed changeset
 
-REVIEW HISTORY
+Review History
 ^^^^^^^^^^^^^^
 
 ``git log``
@@ -181,8 +203,8 @@ REDO COMMITS
 ``git reset --hard [branchName]``
  * It Keep you local changes and replace it your files with the files uploaded at branchName branch.
 
-Commands
---------
+Other Commands
+--------------
 
 .. code-block:: bash
 
@@ -199,14 +221,13 @@ Commands
 
 * To pull specific file from specific branch
 
-``ssh-keygen -t rsa  -C "emailid"``
- * To generate SSH key for bitbucket:
-
 ``git diff develop(FIRST-BRANCH) feature/matches-and-filter(SECOND-BRANCH)  --ajax_mymatch.php(FILE-NAME)``
  * To check the difference between made in the file of two different branch
 
-Gitignore
----------
+Gitignore file
+--------------
+
+Have a look gitignore.io website to generate gitignore file for your framework.
 
 +----------------+-------------------------------------------------------------------------------+
 |gitignore entry | Ignores every…                                                                |
