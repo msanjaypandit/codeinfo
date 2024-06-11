@@ -32,12 +32,9 @@ html_css_files = [
     'css/custom.css',
 ]
 
-os.mkdir("readthedocs")
-# Create a directory with specific permissions
+
 os.mkdir("readthedocs", mode=0o755)  # Read and execute for all, write for owner only
 
-os.mkdir("readthedocs/html")
-# Create a directory with specific permissions
 os.mkdir("readthedocs/html", mode=0o755)  # Read and execute for all, write for owner only
 
 # Specify the source and destination directories
