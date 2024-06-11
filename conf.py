@@ -5,6 +5,7 @@
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
+import shutil
 
 project = 'codeinfo'
 copyright = '2024, sanjay'
@@ -29,3 +30,10 @@ html_static_path = ['_static']
 html_css_files = [
     'css/custom.css',
 ]
+
+# Specify the source and destination directories
+source_directory = '_build/html'
+destination_directory = '/readthedocs/html'
+
+# Copy the directory and its contents
+shutil.copytree(source_directory, destination_directory)
