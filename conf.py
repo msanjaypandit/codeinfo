@@ -6,6 +6,7 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 import shutil
+import os
 
 project = 'codeinfo'
 copyright = '2024, sanjay'
@@ -31,9 +32,22 @@ html_css_files = [
     'css/custom.css',
 ]
 
+os.mkdir("readthedocs")
+# Create a directory with specific permissions
+os.mkdir("readthedocs", mode=0o755)  # Read and execute for all, write for owner only
+
+os.mkdir("readthedocs/html")
+# Create a directory with specific permissions
+os.mkdir("readthedocs/html", mode=0o755)  # Read and execute for all, write for owner only
+
 # Specify the source and destination directories
 source_directory = '_build/html'
 destination_directory = '/readthedocs/html'
 
 # Copy the directory and its contents
 shutil.copytree(source_directory, destination_directory)
+
+
+
+# Create a directory named "my_new_dir" in the current working directory
+
