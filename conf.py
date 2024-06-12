@@ -40,7 +40,7 @@ source_directory = '_build/html'
 destination_directory = 'readthedocs/html'
 
 # Copy the directory and its contents
-shutil.copytree(source_directory, destination_directory)
+shutil.move(source_directory, destination_directory)
 
 
 
