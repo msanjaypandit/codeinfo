@@ -262,3 +262,5 @@ Have a look gitignore.io website to generate gitignore file for your framework.
 |!README.md |     | Doesn’t ignore any README.md file even if it matches an exclude pattern, e.g. `*.md.`  | 
 |                 | NOTE This does not work if the file is located within an ignored folder.               |
 +-----------------+----------------------------------------------------------------------------------------+
+
+`Link text <http://local.devadoptds.com/member.html?utm_source=newsletter&utm_medium=email&utm_campaign=aprilv2&utm_content=check_matches>`_
