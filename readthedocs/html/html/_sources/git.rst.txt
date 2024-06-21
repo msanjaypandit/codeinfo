@@ -263,3 +263,12 @@ Have a look gitignore.io website to generate gitignore file for your framework.
 |                 | NOTE This does not work if the file is located within an ignored folder.               |
 +-----------------+----------------------------------------------------------------------------------------+
 
+`link 1 with adopted email utm <http://local.devadoptds.com/member.html?utm_source=newsletter&utm_medium=email&utm_campaign=aprilv2&utm_content=check_matches>`_
+
+`link 2 with email Google ads <http://local.devadoptds.com/member.html?gclid=EAIaIQobChMIsrH0zavThgMVGyatBh0hXgNsEAEYASAAEgJlYPD_BwE>`_
+
+`link 3 with email MS ads <http://local.devadoptds.com/member.html?mclid=EAIaIQobChMIsrH0zavThgMVGyatBh0hXgNsEAEYASAAEgJlYPD_BwE>`_
+
+`link 4 with email Meta ads <http://local.devadoptds.com/member.html?fbclid=EAIaIQobChMIsrH0zavThgMVGyatBh0hXgNsEAEYASAAEgJlYPD_BwE>`_
+
+`link 5 without with UTM <http://local.devadoptds.com/member.html?utm_source=google&utm_medium=sample_medium&utm_campaign=demo_campiagn&utm_term=sample_term&utm_content=sample_content&utm_custom=sample_custom_utm>`_
